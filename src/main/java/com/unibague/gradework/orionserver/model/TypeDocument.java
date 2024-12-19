@@ -1,19 +1,20 @@
 package com.unibague.gradework.orionserver.model;
 
+import lombok.*;
+import lombok.experimental.SuperBuilder;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.RequiredArgsConstructor;
 
+/**
+ * Represents a type of proposal.
+ */
 @Data
 @RequiredArgsConstructor
 @AllArgsConstructor
-@Builder
-@Document(collection = "roles")
-public class Role {
+@SuperBuilder
+@Document(collection = "types")
+public class TypeDocument {
     @Id
-    private String idRole;
+    private String idTypeDocument;
     private String name;
 }
