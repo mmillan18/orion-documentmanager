@@ -29,6 +29,13 @@ public class TypeDocumentServiceImpl implements TypeDocumentService {
         return typeDocumentRepository.findById(id);
     }
 
+    @Override
+    public TypeDocument updateTypeDocument(String id, TypeDocument updatedTypeDocument) {
+        return typeDocumentRepository.findById(id).map(existingTypeDocument -> {
+            existingTypeDocument.setName(updatedTypeDocument.getName());
+            return typeDocumentRepository.save(existingTypeDocument);
+        }).orElse(null);
+    }
 
     @Override
     public void deleteTypeDocument(String id) {

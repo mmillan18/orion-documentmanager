@@ -33,6 +33,13 @@ public class TypeDocumentController {
                 .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<TypeDocument> updateTypeDocument(@PathVariable String id, @RequestBody TypeDocument updatedTypeDocument) {
+        TypeDocument updated = typeDocumentService.updateTypeDocument(id, updatedTypeDocument);
+        return updated != null
+                ? new ResponseEntity<>(updated, HttpStatus.OK)
+                : new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteTypeDocument(@PathVariable String id) {
         typeDocumentService.deleteTypeDocument(id);

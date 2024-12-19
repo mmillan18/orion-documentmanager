@@ -48,6 +48,22 @@ public class DocumentController {
         return new ResponseEntity<>(documentService.getAllProposals(), HttpStatus.OK);
     }
 
+    /**
+     * Updates an existing DocumentProposal by ID.
+     *
+     * @param id       The ID of the DocumentProposal to update.
+     * @param updatedProposal The updated DocumentProposal object.
+     * @return ResponseEntity containing the updated DocumentProposal and HTTP status 200 (OK),
+     * or HTTP status 404 (Not Found) if the proposal does not exist.
+     */
+    @PutMapping("/proposal/{id}")
+    public ResponseEntity<DocumentProposal> updateProposal(
+            @PathVariable String id, @RequestBody DocumentProposal updatedProposal) {
+        DocumentProposal updated = documentService.updateProposal(id, updatedProposal);
+        return updated != null
+                ? new ResponseEntity<>(updated, HttpStatus.OK)
+                : new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
 
     /**
      * Deletes a DocumentProposal by ID.
@@ -84,6 +100,22 @@ public class DocumentController {
     }
 
     /**
+     * Updates an existing DocumentReport by ID.
+     *
+     * @param id     The ID of the DocumentReport to update.
+     * @param updatedReport The updated DocumentReport object.
+     * @return ResponseEntity containing the updated DocumentReport and HTTP status 200 (OK),
+     * or HTTP status 404 (Not Found) if the report does not exist.
+     */
+    @PutMapping("/report/{id}")
+    public ResponseEntity<DocumentReport> updateReport(
+            @PathVariable String id, @RequestBody DocumentReport updatedReport) {
+        DocumentReport updated = documentService.updateReport(id, updatedReport);
+        return updated != null
+                ? new ResponseEntity<>(updated, HttpStatus.OK)
+                : new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+    /**
      * Deletes a DocumentReport by ID.
      *
      * @param id The ID of the DocumentReport to delete.
@@ -116,6 +148,24 @@ public class DocumentController {
     public ResponseEntity<List<DocumentSustentation>> getAllSustentations() {
         return new ResponseEntity<>(documentService.getAllSustentations(), HttpStatus.OK);
     }
+
+    /**
+     * Updates an existing DocumentSustentation by ID.
+     *
+     * @param id            The ID of the DocumentSustentation to update.
+     * @param updatedSustentation  The updated DocumentSustentation object.
+     * @return ResponseEntity containing the updated DocumentSustentation and HTTP status 200 (OK),
+     * or HTTP status 404 (Not Found) if the sustentation does not exist.
+     */
+    @PutMapping("/sustentation/{id}")
+    public ResponseEntity<DocumentSustentation> updateSustentation(
+            @PathVariable String id, @RequestBody DocumentSustentation updatedSustentation) {
+        DocumentSustentation updated = documentService.updateSustentation(id, updatedSustentation);
+        return updated != null
+                ? new ResponseEntity<>(updated, HttpStatus.OK)
+                : new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+
     /**
      * Deletes a DocumentSustentation by ID.
      *

@@ -9,5 +9,7 @@ public interface TypeDocumentService {
     TypeDocument createTypeDocument(TypeDocument typeDocument);
     List<TypeDocument> getAllTypeDocuments();
     Optional<TypeDocument> getTypeDocumentById(String id);
+
+    TypeDocument updateTypeDocument(String id, TypeDocument updatedTypeDocument);
     void deleteTypeDocument(String id);
 }
